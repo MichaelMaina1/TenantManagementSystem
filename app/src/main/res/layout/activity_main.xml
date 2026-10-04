@@ -106,7 +106,8 @@
             android:id="@+id/tenantResultTextView"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text='@{tenant != null ? "Tenant: " + tenant.name + "\nPhone: " + tenant.phone + "\nRent: KSh " + tenant.rent : "Saved tenant will appear here"}'
+            android:text="@{tenant.summary()}"
+            android:hint="Saved tenant will appear here"
             android:textSize="18sp"
             android:padding="16dp"
             android:layout_margin="24dp"
