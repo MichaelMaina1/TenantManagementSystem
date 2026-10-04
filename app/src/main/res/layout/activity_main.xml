@@ -1,14 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
-
         <variable
             name="tenant"
             type="com.example.tenantmanagementsystem.Tenant" />
-
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -116,5 +113,4 @@
             app:layout_constraintEnd_toEndOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
-
 </layout>
