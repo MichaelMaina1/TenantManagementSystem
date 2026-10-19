@@ -38,4 +38,30 @@ class LoginActivity : AppCompatActivity() {
             startActivity(intent)
         }
     }
+
+    override fun onStart() {
+        super.onStart()
+        android.util.Log.d("TENANT_LIFECYCLE", "LoginActivity: onStart")
+    }
+
+    override fun onResume() {
+        super.onResume()
+        android.util.Log.d("TENANT_LIFECYCLE", "LoginActivity: onResume")
+    }
+
+    override fun onPause() {
+        super.onPause()
+        android.util.Log.d("TENANT_LIFECYCLE", "LoginActivity: onPause")
+    }
+
+    override fun onStop() {
+        super.onStop()
+        android.util.Log.d("TENANT_LIFECYCLE", "LoginActivity: onStop")
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        android.util.Log.d("TENANT_LIFECYCLE", "LoginActivity: onDestroy")
+    }
+
 }

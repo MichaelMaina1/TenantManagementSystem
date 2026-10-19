@@ -29,4 +29,30 @@ class RegisterActivity : AppCompatActivity() {
             finish()
         }
     }
+
+    override fun onStart() {
+        super.onStart()
+        android.util.Log.d("TENANT_LIFECYCLE", "RegisterActivity: onStart")
+    }
+
+    override fun onResume() {
+        super.onResume()
+        android.util.Log.d("TENANT_LIFECYCLE", "RegisterActivity: onResume")
+    }
+
+    override fun onPause() {
+        super.onPause()
+        android.util.Log.d("TENANT_LIFECYCLE", "RegisterActivity: onPause")
+    }
+
+    override fun onStop() {
+        super.onStop()
+        android.util.Log.d("TENANT_LIFECYCLE", "RegisterActivity: onStop")
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        android.util.Log.d("TENANT_LIFECYCLE", "RegisterActivity: onDestroy")
+    }
+
 }
