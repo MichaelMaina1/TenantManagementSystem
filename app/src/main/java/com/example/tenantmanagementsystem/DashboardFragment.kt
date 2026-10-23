@@ -31,15 +31,25 @@ class DashboardFragment : Fragment() {
         binding.tenantCountTextView.text = "Tenants\n$tenantCount"
         binding.totalRentTextView.text = "Total rent\nKSh %,.0f".format(totalRent)
 
+
         // Navigate to Add Tenant screen
         binding.addTenantButton.setOnClickListener {
-            findNavController().navigate(R.id.action_dashboardFragment_to_addTenantFragment)
+            val action =
+                DashboardFragmentDirections
+                    .actionDashboardFragmentToAddTenantFragment()
+
+            findNavController().navigate(action)
         }
 
-        // Navigate to View Tenants screen directly
+        // Navigate to View Tenants screen
         binding.viewTenantsButton.setOnClickListener {
-            findNavController().navigate(R.id.action_dashboardFragment_to_viewTenantsFragment)
+            val action =
+                DashboardFragmentDirections
+                    .actionDashboardFragmentToViewTenantsFragment()
+
+            findNavController().navigate(action)
         }
+
     }
 
     override fun onDestroyView() {

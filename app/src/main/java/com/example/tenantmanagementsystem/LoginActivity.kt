@@ -6,6 +6,11 @@ import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.tenantmanagementsystem.databinding.ActivityLoginBinding
+import android.view.Menu
+import android.view.MenuItem
+import androidx.navigation.NavGraph.Companion.findStartDestination
+import androidx.navigation.ui.navigateUp
+import androidx.navigation.ui.onNavDestinationSelected
 
 class LoginActivity : AppCompatActivity() {
     private lateinit var binding: ActivityLoginBinding

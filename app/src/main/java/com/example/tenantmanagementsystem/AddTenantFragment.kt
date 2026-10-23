@@ -1,6 +1,7 @@
 package com.example.tenantmanagementsystem
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -8,7 +9,6 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.example.tenantmanagementsystem.databinding.FragmentAddTenantBinding
-
 
 class AddTenantFragment : Fragment() {
 
@@ -20,7 +20,9 @@ class AddTenantFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        _binding = FragmentAddTenantBinding.inflate(inflater, container, false)
+        _binding = FragmentAddTenantBinding.inflate(
+            inflater, container, false
+        )
         return binding.root
     }
 
@@ -32,23 +34,64 @@ class AddTenantFragment : Fragment() {
             val phone = binding.phoneEditText.text.toString().trim()
             val rent = binding.rentEditText.text.toString().trim()
 
+
             if (name.isEmpty() || phone.isEmpty() || rent.isEmpty()) {
-                Toast.makeText(requireContext(), "Please fill in all fields", Toast.LENGTH_SHORT).show()
+                Toast.makeText(
+                    requireContext(),
+                    "Please fill in all fields",
+                    Toast.LENGTH_SHORT
+                ).show()
                 return@setOnClickListener
             }
 
+// Check that the phone number has at least 10 digits
+            if (phone.filter { it.isDigit() }.length < 10) {
+                binding.phoneEditText.error = "Enter a valid phone number"
+                return@setOnClickListener
+            }
+
+
             val tenant = Tenant(name, phone, rent)
 
-            // Save to shared repository object
+            // Save the tenant
             TenantRepository.addTenant(tenant)
 
-            // Pass tenant data to ViewTenantsFragment using Safe Args action
-            val action = AddTenantFragmentDirections.actionAddTenantFragmentToViewTenantsFragment(newTenant = tenant)
+            // Pass the tenant to ViewTenantsFragment using Safe Args
+            val action =
+                AddTenantFragmentDirections
+                    .actionAddTenantFragmentToViewTenantsFragment(
+                        newTenant = tenant
+                    )
+
             findNavController().navigate(action)
         }
     }
 
+    override fun onStart() {
+        super.onStart()
+        Log.d("ADD_TENANT_LIFECYCLE", "AddTenantFragment: onStart")
+    }
+
+    override fun onResume() {
+        super.onResume()
+        Log.d("ADD_TENANT_LIFECYCLE", "AddTenantFragment: onResume")
+    }
+
+    override fun onPause() {
+        super.onPause()
+        Log.d("ADD_TENANT_LIFECYCLE", "AddTenantFragment: onPause")
+    }
+
+    override fun onStop() {
+        super.onStop()
+        Log.d("ADD_TENANT_LIFECYCLE", "AddTenantFragment: onStop")
+    }
+
     override fun onDestroyView() {
+        Log.d(
+            "ADD_TENANT_LIFECYCLE",
+            "AddTenantFragment: onDestroyView"
+        )
         super.onDestroyView()
         _binding = null
     }
